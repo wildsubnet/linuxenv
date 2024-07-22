@@ -11,3 +11,5 @@ RUN dnf update -y && \
 USER ${user}
 RUN cd
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+RUN python3 -m ensurepip
+RUN echo "export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH" >> $HOME/.zshrc
