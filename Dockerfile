@@ -1,4 +1,5 @@
-FROM almalinux/arm64v8:9.3-base-20231124
+#FROM almalinux/arm64v8:9.3-base-20231124
+FROM arm64v8/almalinux:9.4
 LABEL maintainer="Matthew Tighe"
 ARG user=devuser
 RUN dnf update -y && \
@@ -11,5 +12,13 @@ RUN dnf update -y && \
 USER ${user}
 RUN cd
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+#
+# Install pip
+#
 RUN python3 -m ensurepip
 RUN echo "export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH" >> $HOME/.zshrc
+#
+# Install Jupyter Notebook. IP 0.0.0.0 ensures it works with docker port binding
+#
+RUN $HOME/.local/bin/pip3 install notebook
+RUN echo "alias jnote=\"jupyter notebook --ip 0.0.0.0 --notebook-dir=/vmshare\"" >> $HOME/.zshrc
