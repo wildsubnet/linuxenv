@@ -1,5 +1,5 @@
-#FROM almalinux/arm64v8:9.3-base-20231124
-FROM arm64v8/almalinux:9.4
+#FROM arm64v8/almalinux:9.4
+FROM arm64v8/almalinux:10
 LABEL maintainer="Matthew Tighe"
 ARG user=devuser
 RUN dnf update -y && \
