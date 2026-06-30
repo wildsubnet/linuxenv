@@ -4,8 +4,8 @@ LABEL maintainer="Matthew Tighe"
 ARG user=devuser
 RUN dnf update -y && \
     dnf install -y git iputils gnupg \
-    nodejs zsh wget nano \
-    nodejs npm bind-utils  && \
+    nodejs zsh wget nano net-tools \
+    nodejs npm bind-utils procps && \
     adduser --shell /bin/zsh --comment "User" ${user} && \
     echo "devuser:<a href="mailto://p@ssword1">p@ssword1</a>" | \ 
     chpasswd &&  usermod -aG wheel devuser
