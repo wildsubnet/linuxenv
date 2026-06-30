@@ -6,4 +6,5 @@
 # docker tag <new name> <old name>
 # docker rmi <new name>
 # 
-docker build --rm -f Dockerfile -t almalinux-dev .
+#docker build --rm -f Dockerfile -t almalinux-dev .
+container build -f Dockerfile -t alma10machine
